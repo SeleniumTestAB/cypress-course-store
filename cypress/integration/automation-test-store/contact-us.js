@@ -1,4 +1,8 @@
 /// <reference types="Cypress" />
+import {navigation} from "../../support/page_objects/navigation"
+
+
+
 
 
 describe("Test Contact Us from via Automation Test Store", () => {
@@ -13,4 +17,8 @@ describe("Test Contact Us from via Automation Test Store", () => {
         .should('be.visible')
     });
 
+    it('Should go to Hair Care Page', () => {
+        cy.visit("https://www.automationteststore.com/")
+        navigation.hairCareTab().click()
+    })
 })
