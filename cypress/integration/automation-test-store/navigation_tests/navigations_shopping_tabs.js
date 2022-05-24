@@ -1,5 +1,4 @@
 import { MainTabNames } from "../../../support/dictonaries/main_tab_names";
-import { apparelAndAccessoriesPage } from "../../../support/page_objects/apparel_and_accessories_page";
 import { navigation } from "../../../support/page_objects/navigation";
 
 describe("Test Navigation of shopping tabs within  Automation Test Store", () => {

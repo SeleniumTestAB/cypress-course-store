@@ -18,19 +18,20 @@ class SortingPanel {
         return page;
     }
 
-    public isGridViewEnabled(): boolean | undefined{
-        return this.checkIfViewIsEnabled(this.gridButton(), this.gridButtonId)
+    public isGridViewEnabled(): Cypress.Chainable<any>{
+        return this.checkIfViewIsEnabled(this.gridButton(), "gridEnabled");
     }
 
-    public isListViewEnabled(): boolean | undefined {
-        return this.checkIfViewIsEnabled(this.listButton(), this.listButtonId)
+    public isListViewEnabled(): Cypress.Chainable<any> {
+        return this.checkIfViewIsEnabled(this.listButton(), "listEnabled");
     }
 
-    private checkIfViewIsEnabled(viewOption: Cypress.Chainable<any>, viewOptionId: string): boolean | undefined {
-       viewOption.should('exist');
-       const $option = Cypress.$(viewOptionId);
-       return  $option.attr('class')?.includes('btn-orange');
-
+    private checkIfViewIsEnabled(viewOption: Cypress.Chainable<any>, viewOptionAlias: string): Cypress.Chainable<any> {
+       return  viewOption.invoke('attr', 'class')
+       .then(function(elementClass) {  elementClass.includes('btn-orange')})
+       .as(viewOptionAlias);
+    
+       
     }
 }
 

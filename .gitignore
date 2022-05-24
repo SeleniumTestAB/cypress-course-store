@@ -5,3 +5,4 @@ videos
 mochawesome-report
 package-lock.json
 workspace.code-workspace
+allure-results

@@ -21,15 +21,15 @@ class SortingPanel {
         return page;
     }
     isGridViewEnabled() {
-        return this.checkIfViewIsEnabled(this.gridButton(), this.gridButtonId);
+        return this.checkIfViewIsEnabled(this.gridButton(), "gridEnabled");
     }
     isListViewEnabled() {
-        return this.checkIfViewIsEnabled(this.listButton(), this.listButtonId);
+        return this.checkIfViewIsEnabled(this.listButton(), "listEnabled");
     }
-    checkIfViewIsEnabled(viewOption, viewOptionId) {
-        viewOption.should('exist');
-        const $option = Cypress.$(viewOptionId);
-        return $option.attr('class')?.includes('btn-orange');
+    checkIfViewIsEnabled(viewOption, viewOptionAlias) {
+        return viewOption.invoke('attr', 'class')
+            .then(function (elementClass) { elementClass.includes('btn-orange'); })
+            .as(viewOptionAlias);
     }
 }
 exports.sortingPanel = new SortingPanel();
